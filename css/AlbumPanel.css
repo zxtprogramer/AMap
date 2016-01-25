@@ -1,0 +1,73 @@
+.AlbumPanelDiv{
+  width:150px;
+  height:600px;
+  background:#eee;
+  position:absolute;
+  top:50px;
+  right:10px;
+  bottom:0px;
+  z-index:1001;
+  border:1px solid #999;
+  box-shadow:3px 3px 3px #aaa;
+  border-radius:5px;
+}
+
+.AlbumBarDiv{
+  width:150px;
+  height:40px;
+  background:#eee;
+  position:absolute;
+  top:5px;
+}
+
+.AlbumListDiv{
+  width:150px;
+  background:#666;
+  position:absolute;
+  top:40px;
+  bottom:10px;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+.AlbumUL{
+  list-style:none;
+  padding:0;
+  position:relative;
+  left:0px;
+  top:0px;
+  margin:3px;
+  padding:0px
+}
+
+.AlbumULLI{
+  list-style:none;
+  width:150px;
+  height:150px;
+  margin:0px;
+  padding:0px;
+  position:relative;
+  //float:left;
+  left:0px;
+  top:0px;
+}
+
+.AlbumItemDiv{
+  list-style:none;
+  text-align:left;
+  width:150px;
+  height:150px;
+  margin:0px;
+  overflow:hidden;
+  background:#666;
+  
+}
+
+.AlbumItemDiv img{
+  width:120px;
+  height:80px;
+  border:1px solid #000;
+  margin:2px;
+}
+
+

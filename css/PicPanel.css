@@ -1,0 +1,94 @@
+.PicPanelDiv{
+    width:400px;
+    height:600px;
+    background:#eee;
+    position:absolute;
+    top:50px;
+    left:10px;
+    box-shadow:2px 2px 2px #aaa;
+    border:1px #999;
+    overflow:hidden;
+    z-index:1000;
+    border-radius:5px;
+}
+
+.PicPanelToolDiv{
+    width:400px;
+    height:40px;
+    margin:3px;
+    padding:3px;
+    background:#eee;
+    
+}
+.PicPanelTool2Div{
+    width:400px;
+    height:40px;
+    margin:0px;
+    padding:0px;
+    background:#eee;
+    position:absolute;
+    top:340px;
+    left:0px;
+    
+}
+
+#PicNumText{
+    width:50px;
+}
+
+.PicPanelImgDiv{
+    width:400px;
+    height:300px;
+    background:#666;
+    position:absolute;
+    top:40px;
+    left:0px;
+}
+
+.PicPanelImg{
+    max-height:300px;
+    max-width:400px;
+    position:absolute;
+}
+
+
+.PicInfoDiv{
+    width:400px;
+    height:200px;
+    background:#fff;
+    position:absolute;
+    left:0px;
+    top:380px;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+
+.PicPanelCmtDiv{
+    width:400px;
+    height:200px;
+    bottom:0px;
+    position:absolute;
+    left:0px;
+    top:380px;
+    overflow:hidden;
+}
+
+.PicCmtContentDiv{
+    width:400px;
+    height:160px;
+    background:#fff;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+.PicCmtSendDiv{
+    width:400px;
+    height:40px;
+    background:#00b;
+ 
+}
+
+
+
+
+
