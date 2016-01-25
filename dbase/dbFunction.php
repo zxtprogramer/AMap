@@ -127,6 +127,14 @@ function addPic($userID, $picName, $width, $height, $des, $picPath, $shootTime, 
     $userName=getUserName($userID);
     $sql="INSERT INTO PicTable (UserID, UserName,  PicName, Width, Height, Description, PicPath, ShootTime, UploadTime, Longitude, Latitude, LikeNum, AlbumID) VALUES($userID, '$userName', '$picName', $width, $height, '$des', '$picPath', $shootTime, $uploadTime, $longitude, $latitude, $likeNum, $albumID)";
     if(!exeSQL($sql)){printf("add pic error");}
+    else{
+        $snapPath=$picPath . "_snap.jpg";
+        $sql="UPDATE AlbumTable SET FacePicPath='$snapPath' WHERE AlbumID=$albumID";
+        exeSQL($sql);
+        $sql="UPDATE AlbumTable SET PicNum=PicNum+1 WHERE AlbumID=$albumID";
+        exeSQL($sql);
+    }
+ 
 }
 
 function addFriend($fromID, $toID, $type, $createTime){

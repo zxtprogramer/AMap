@@ -43,12 +43,14 @@ function freshAlbum(){
        alName=albumArray[i]['AlbumName'];
        alDes=albumArray[i]['Description'];
        alPicNum=albumArray[i]['PicNum'];
+       alUserName=albumArray[i]['UserName'];
        alTime=albumArray[i]['CreateTime'];
-       //alFacePath=albumArray[i]['FacePath'];
-       alFacePath="";
+       alFacePath=albumArray[i]['FacePicPath'];
        str=str + '<li><a href="javascript:gotoAlbum(' + i +')"><div class="AlbumItemDiv" id="AlbumItem' + i + '">' + 
            '<img src="' + alFacePath + '" /><br />' +
-           '<span>' + alName + '</span>' +
+           '<span>名称:' + alName + '</span><br />' +
+           '<span>作者:' + alUserName + '</span><br />' +
+           '<span>数目:' + alPicNum + '</span><br />' +
            '</div></a></li>';
     }
     $("#AlbumUL").html(str);

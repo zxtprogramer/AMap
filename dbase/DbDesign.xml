@@ -9,7 +9,7 @@
     <Longitude>DOUBLE DEFAULT 0</Longitude>
     <Latitude>DOUBLE DEFAULT 0</Latitude>
     <Share>ENUM('A','F','N') DEFAULT 'N'</Share>    <!--	A: every one can see	F: only friend can see	N: not share	-->
-	<FaceID>INT(4) UNSIGNED DEFAULT 1</FaceID>
+    <FacePath>VARCHAR(1024) NOT NULL DEFAULT '/images/userface.jpg'</FacePath>
   </UserInfoTable>
 
   <PicTable>
@@ -38,7 +38,7 @@
     <Description>VARCHAR(1024) </Description>
     <CreateTime>INT(6) UNSIGNED</CreateTime>
 	<PicNum>INT(6) UNSIGNED DEFAULT 0</PicNum>
-	<FacePicID>INT(6) UNSIGNED DEFAULT 1</FacePicID>
+	<FacePicPath>CHAR(255) NOT NULL DEFAULT '/images/albumface.jpg'</FacePicPath>
   </AlbumTable>
 
   <LikeTable>
