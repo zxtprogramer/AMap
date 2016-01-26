@@ -24,7 +24,7 @@ function uploadPic(){
     
     
         $snapPath=$path . "_snap.jpg";
-        $cmd="convert -resize 150x100 " . $path . " " . $snapPath;
+        $cmd="convert -resize 400x300 " . $path . " " . $snapPath;
         system($cmd);
     
         $picDes=$_POST['upPicDes'];

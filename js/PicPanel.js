@@ -155,23 +155,26 @@ function freshPanel(){
     if(picW>0 && picH>0){
 
 	    $("#LikeNumLabel").text(picLikeNum);
-	    $("#PicPanelImg").attr("src",picPath);
+	    $("#PicPanelImg").attr("src",picPath + "_snap.jpg");
 
 	    divH=parseInt($("#PicPanelImgDiv").height());
 	    divW=parseInt($("#PicPanelImgDiv").width());
 
 	    rH=divH/picH;  rW=divW/picW;
 
-	    if(rH>=1 && rW>=1){
-	        topPx=(divH-picH)/2;
-	        leftPx=(divW-picW)/2;
-	    }
-	    else{
-	        ratio=Math.min(rH,rW);
-	        topPx=(divH - picH*ratio)/2;
-	        leftPx=(divW - picW*ratio)/2;
-	    }
+        if(rH>=rW){
+            imgH=divW*picH/picW;
+            imgW=divW;
+        }
+        else{
+            imgW=divH*picW/picH;
+            imgH=divH;
+        }
 
+        topPx=(divH - imgH)/2;
+        leftPx=(divW - imgW)/2;
+	    $("#PicPanelImg").css("height",imgH+"px");
+	    $("#PicPanelImg").css("width",imgW+"px");
 	    $("#PicPanelImg").css("top",topPx+"px");
 	    $("#PicPanelImg").css("left",leftPx+"px");
     }
