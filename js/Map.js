@@ -3,7 +3,8 @@ var mouseLng, mouseLat;
 var lngMax,lngMin,latMax,latMin;
 
 var picArray=new Array();
-var picMarker=new Array();
+//var picMarker=new Array();
+var snapDiv=new Array();
 
 //show pic method;
 var picNum=20;
@@ -100,6 +101,8 @@ function initStatus(){
     $("#MapMask").hide();
     $("#NewAlbumDiv").hide();
     $("#UploadPicDiv").hide();
+    $("#PicPanelDiv").hide();
+    $("#AlbumPanelDiv").hide();
   
 }
 
@@ -151,38 +154,65 @@ function _onTouchend(e){
     rangeChangeFresh();
 }
 
+function onClickSnap(index){
+    nowIndex=index;
+    freshPanel();
+    $("#PicPanelDiv").show();
+}
 
 function freshPic(){
     nowIndex=0;
     freshPanel();
     
+/*
     for(var i=0;i<picMarker.length;i++){
 	picMarker[i].setMap();
     }
+*/
+    //map.remove(picMarker);
+
+    for(var i=0;i<snapDiv.length;i++){
+        snapDiv[i].parentNode.removeChild(snapDiv[i]);
+    }
+    snapDiv=new Array();
+
     for(var i=0;i<picArray.length;i++){
-	picUserID=picArray[i]['UserID'];
-	picW=picArray[i]['Width'];
-	picH=picArray[i]['Height'];
-	
-	picLng=parseFloat(picArray[i]['Longitude']);
-	picLat=parseFloat(picArray[i]['Latitude']);
-	
-	picSnapPath=picArray[i]['PicPath']+"_snap.jpg";
-	picLikeNum=picArray[i]['LikeNum'];
-	
-	picInfo='<div class="SnapDiv" id="SnapDiv' + i + '"><img onclick="javascript:onClickMarker(' + i + ')" class="SnapImg" src="' + picSnapPath + '" /></div>';
-	picMarker[i]=new AMap.Marker({position:[picLng,picLat]});
-    picMarker[i].setLabel({offset:new AMap.Pixel(15,10), content:picInfo});
-	picMarker[i].setMap(map);
+    	picUserID=picArray[i]['UserID'];
+    	picW=picArray[i]['Width'];
+    	picH=picArray[i]['Height'];
+    	
+    	picLng=parseFloat(picArray[i]['Longitude']);
+    	picLat=parseFloat(picArray[i]['Latitude']);
+
+        var pixel=map.lnglatTocontainer([picLng,picLat]);
+        px=pixel.getX();
+        py=pixel.getY();
+    	
+    	picSnapPath=picArray[i]['PicPath']+"_snap.jpg";
+    	picLikeNum=picArray[i]['LikeNum'];
+    	
+    	picInfo='<a href="javascript:onClickSnap('+ i +')">' +'<img  class="SnapImg" src="' + picSnapPath + '" /></a>' ;
+        snapDiv[i]=document.createElement("div");
+        snapDiv[i].id="SnapDiv" + i;
+        snapDiv[i].style.left=px + "px";
+        snapDiv[i].style.top=py + "px";
+        snapDiv[i].className="SnapDiv";
+        snapDiv[i].innerHTML=picInfo;
+        document.body.appendChild(snapDiv[i]);
+
+    	//var div=document.createElement('<div class="SnapDiv" id="SnapDiv' + i + '"><img onclick="javascript:onClickMarker(' + i + ')" class="SnapImg" src="' + picSnapPath + '" /></div>');
+    	//picMarker[i]=new AMap.Marker({position:[picLng,picLat]});
+    	//picMarker[i]=new AMap.Marker({icon:new AMap.Icon({size:new AMap.Size(200,200),image:""}),position:[picLng,picLat]});
+        //picMarker[i].setLabel({offset:new AMap.Pixel(0,0), content:picInfo});
+    	//picMarker[i].setMap(map);
+        //AMap.event.addListener(picMarker[i], 'click', function(){alert(eval(i));});
+    	//AMap.event.addDomListener(document.getElementById("SnapDiv1"),'click',function(){alert();});
     }
     
 }
 
 
-function onClickMarker(index){
-    nowIndex=index;
-    freshPanel();
-}
+
 
 initMap();
 initStatus();

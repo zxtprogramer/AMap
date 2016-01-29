@@ -28,7 +28,7 @@
       <iframe id="UploadIframe" src="upload.php"> </iframe>
     </div>
 
-    <div id="NavDiv">
+    <div id="NavDiv" class="NavDiv">
       <ul id="Nav">
         <?php
           session_start();
@@ -123,7 +123,7 @@
       
     </div>
     
-    <div id="MapContainer" tabindex="0" />
+    <div id="MapContainer" tabindex="0" > </div>
   </body>
 
   <script type="text/javascript" src="/js/jquery.min.js"></script>
