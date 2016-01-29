@@ -188,7 +188,7 @@ function freshPic(){
         px=pixel.getX();
         py=pixel.getY();
     	
-    	picSnapPath=picArray[i]['PicPath']+"_snap.jpg";
+    	picSnapPath=picArray[i]['PicPath']+"_snap2.jpg";
     	picLikeNum=picArray[i]['LikeNum'];
     	
     	picInfo='<a href="javascript:onClickSnap('+ i +')">' +'<img  class="SnapImg" src="' + picSnapPath + '" /></a>' ;

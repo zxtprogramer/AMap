@@ -1,5 +1,10 @@
 var nowIndex=0;
 
+function closePicPanel(){
+  $("#PicPanelDiv").hide();
+}
+
+
 function likeFun(){
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
@@ -74,7 +79,7 @@ function showComment(){
         cmtUserName=cmtArray[i]['UserName'];
         cmtTime=getTimeStr(cmtArray[i]['CreateTime']);
         cmtStr=cmtArray[i]['Comment'];
-        str=cmtUserName + "(" + cmtTime + "): " + cmtStr;
+        str='<span class="CmtUserName">' + cmtUserName + "</span>" + '<span class="CmtTime"> (' + cmtTime + "): </span>" + '<span class="CmtStr">' + cmtStr + '</span>';
      
         cmt.push(str);
     }

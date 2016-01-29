@@ -21,10 +21,24 @@ function uploadPic(){
         $path="/var/www/html/Data/" . $userID . "/" . $md5 ."_". $filename;
         $path2="/Data/" . $userID . "/" . $md5 ."_". $filename;
         move_uploaded_file($tmpfile, $path);
-    
+
+        $picSize=getimagesize($path);
+        $picW=(float)($picSize[0]); $picH=(float)($picSize[1]);
+
+        $snap2W=100; $snap2H=100;
+        if($picW<$picH){
+            $snap2W=100;
+            $snap2H=(int)(100.0/$picW*$picH);
+        }else{
+            $snap2H=100;
+            $snap2W=(int)(100.0/$picH*$picW);
+        }
     
         $snapPath=$path . "_snap.jpg";
+        $snap2Path=$path . "_snap2.jpg";
         $cmd="convert -resize 400x300 " . $path . " " . $snapPath;
+        system($cmd);
+        $cmd="convert -resize " . $snap2W. "x" . $snap2H ." ". $path . " " . $snap2Path;
         system($cmd);
     
         $picDes=$_POST['upPicDes'];
@@ -33,7 +47,7 @@ function uploadPic(){
 
         $longitude=split(",", $picPos)[0];
         $latitude=split(",", $picPos)[1];
-        $picSize=getimagesize($path);
+
         addPic($userID, $filename,$picSize[0],$picSize[1],$picDes,$path2,time(),time(),$longitude,$latitude,0,$picAlbumID);
     }
     header("Location: /upload.php");

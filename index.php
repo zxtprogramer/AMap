@@ -82,30 +82,28 @@
 
     <div id="PicPanelDiv" class="PicPanelDiv">
       <div id="PicPanelToolDiv" class="PicPanelToolDiv">
-	    <a href="javascript:befPic()"><</a>
-	    <a href="javascript:nextPic()">></a>
+	    <a href="javascript:befPic()">前一张</a>
+	    <a href="javascript:nextPic()">后一张</a>
 	    <a href="javascript:nextGroup()">换一批</a>
-	    排序
 	    <select id="SortTypeSel" onclick="">
-	      <option value="ShootTime">时间</option>
+	      <option value="ShootTime">最近</option>
 	      <option value="LikeNum">好评</option>
-	      <option value="Rand">随机</option>
 	    </select>
 	    数目
 	    <input type="text" id="PicNumText" value="20" />
 	    <input type="button" id="Apply" onclick="applyFun()" value="应用" />
-	
+	    <input type="button" id="ClosePicPanel" onclick="closePicPanel()" value="关闭" />
       </div>
 
       <div id="PicPanelImgDiv" class="PicPanelImgDiv">
-        <img id="PicPanelImg" class="PicPanelImg" src="" />
+        <a href="javascript:nextPic()"><img id="PicPanelImg" class="PicPanelImg" src="" /></a>
       </div>
 
       <div id="PicPanelTool2Div" class="PicPanelTool2Div">
-        <a href="javascript:likeFun()">Like</a>
-        <span id="LikeNumLabel">0</span>
-        <a href="javascript:showComment()">Comment</a>
-        <a href="javascript:showInfo()">Info</a>
+        <a href="javascript:likeFun()">赞</a>
+        <span id="LikeNumLabel">0 </span>
+        <a href="javascript:showComment()"> 评论 </a>
+        <a href="javascript:showInfo()"> 信息 </a>
       </div>
 
       <div id="PicInfoDiv" class="PicInfoDiv">
