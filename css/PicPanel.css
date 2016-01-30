@@ -54,8 +54,10 @@
     position:absolute;
 }
 
-.PicPanelImg img{
-  border:0px;
+.PicPanelVideo{
+    height:300px;
+    width:400px;
+    position:absolute;
 }
 
 .PicInfoDiv{
@@ -126,4 +128,9 @@
 #PicPanelToolDiv img{
   width:20px;
   height:20px;
+}
+
+#CmtSendButton{
+  width:80px;
+  height:30px;
 }

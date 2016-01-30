@@ -97,6 +97,7 @@
 
       <div id="PicPanelImgDiv" class="PicPanelImgDiv">
         <a href="javascript:nextPic()"><img id="PicPanelImg" class="PicPanelImg" src="" /></a>
+        <a href="javascript:nextPic()"><video id="PicPanelVideo" class="PicPanelVideo" src="" controls="controls"/></a>
       </div>
 
       <div id="PicPanelTool2Div" class="PicPanelTool2Div">
@@ -115,7 +116,7 @@
         </div>
         <div id="PicCmtSendDiv" class="PicCmtSendDiv" >
           <input id="CmtContentText" type="text" />
-          <input type="button" value="发送" onclick="sendCmtFun()" />
+          <input id="CmtSendButton" type="button" value="发送" onclick="sendCmtFun()" />
         </div>
       </div>
       

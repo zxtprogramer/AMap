@@ -187,8 +187,13 @@ function freshPic(){
         var pixel=map.lnglatTocontainer([picLng,picLat]);
         px=pixel.getX();
         py=pixel.getY();
+
+        picPath=picArray[i]['PicPath'];
+        ext=picPath.substr(picPath.lastIndexOf(".")+1).toLowerCase();
+
+        if(ext=="mp4")ext="jpg";
     	
-    	picSnapPath=picArray[i]['PicPath']+"_snap2.jpg";
+    	picSnapPath=picPath+"_snap2." + ext;
     	picLikeNum=picArray[i]['LikeNum'];
     	
     	picInfo='<a href="javascript:onClickSnap('+ i +')">' +'<img  class="SnapImg" src="' + picSnapPath + '" /></a>' ;

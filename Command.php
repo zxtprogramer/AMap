@@ -4,6 +4,52 @@ session_start();
 
 function uploadPic(){
     global $userID;
+
+    if ($_FILES["file"]["type"] == "video/mp4"){
+        $filename=$_FILES["file"]["name"];
+        $tmpfile=$_FILES["file"]["tmp_name"];
+        $md5=md5_file($tmpfile);
+
+        $dirPath="/var/www/html/Data/" . $userID;
+        if(!file_exists($dirPath)){
+            mkdir($dirPath);
+        }
+
+        $path="/var/www/html/Data/" . $userID . "/" . $md5 ."_". $filename;
+        $path2="/Data/" . $userID . "/" . $md5 ."_". $filename;
+        move_uploaded_file($tmpfile, $path);
+
+        $snapTmp=$path . "_snapTmp.jpg";
+        $cmd="ffmpeg -i $path -ss 00:00:02 -f image2 $snapTmp";
+        system($cmd);
+
+        $picSize=getimagesize($snapTmp);
+        $picW=(float)($picSize[0]); $picH=(float)($picSize[1]);
+
+        $snap2W=100; $snap2H=100;
+        if($picW<$picH){
+            $snap2W=100;
+            $snap2H=(int)(100.0/$picW*$picH);
+        }else{
+            $snap2H=100;
+            $snap2W=(int)(100.0/$picH*$picW);
+        }
+
+        $snap2Path=$path . "_snap2.jpg";
+        $cmd="convert -resize " . $snap2W. "x" . $snap2H ." ". $snapTmp . " " . $snap2Path;
+        system($cmd);
+    
+        $picDes=$_POST['upPicDes'];
+        $picPos=$_POST['upPicPos'];
+        $picAlbumID=$_POST['upAlbumID'];
+
+        $longitude=split(",", $picPos)[0];
+        $latitude=split(",", $picPos)[1];
+
+        addPic($userID, $filename,$picSize[0],$picSize[1],$picDes,$path2,time(),time(),$longitude,$latitude,0,$picAlbumID);
+    }
+ 
+
     if ((($_FILES["file"]["type"] == "image/gif")
     || ($_FILES["file"]["type"] == "image/jpeg")
     || ($_FILES["file"]["type"] == "image/png")
@@ -33,9 +79,14 @@ function uploadPic(){
             $snap2H=100;
             $snap2W=(int)(100.0/$picH*$picW);
         }
+
+        $pInfo=pathinfo($path);
+        $ext=strtolower($pInfo['extension']);
+
+        
     
-        $snapPath=$path . "_snap.jpg";
-        $snap2Path=$path . "_snap2.jpg";
+        $snapPath=$path . "_snap." . $ext;
+        $snap2Path=$path . "_snap2." . $ext;
         $cmd="convert -resize 400x300 " . $path . " " . $snapPath;
         system($cmd);
         $cmd="convert -resize " . $snap2W. "x" . $snap2H ." ". $path . " " . $snap2Path;

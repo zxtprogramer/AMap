@@ -145,6 +145,8 @@ function freshPanel(){
     if(picArray.length<=0)return;
 
     picPath=picArray[nowIndex]['PicPath'];
+
+    ext=picPath.substr(picPath.lastIndexOf(".")+1).toLowerCase();
     
     picW=parseInt(picArray[nowIndex]['Width']);
     
@@ -157,10 +159,16 @@ function freshPanel(){
 
     picUserID=picArray[nowIndex]['UserID'];
 
-    if(picW>0 && picH>0){
+    if(picW>0 && picH>0 && ext=="mp4"){
+	    $("#PicPanelVideo").attr("src",picPath);
+	    $("#PicPanelImg").hide();
+	    $("#PicPanelVideo").show();
+    }
+
+    if(picW>0 && picH>0 && ext!="mp4"){
 
 	    $("#LikeNumLabel").text(picLikeNum);
-	    $("#PicPanelImg").attr("src",picPath + "_snap.jpg");
+	    $("#PicPanelImg").attr("src",picPath + "_snap." + ext);
 
 	    divH=parseInt($("#PicPanelImgDiv").height());
 	    divW=parseInt($("#PicPanelImgDiv").width());
@@ -182,6 +190,8 @@ function freshPanel(){
 	    $("#PicPanelImg").css("width",imgW+"px");
 	    $("#PicPanelImg").css("top",topPx+"px");
 	    $("#PicPanelImg").css("left",leftPx+"px");
+	    $("#PicPanelVideo").hide();
+	    $("#PicPanelImg").show();
     }
 
     showComment();
