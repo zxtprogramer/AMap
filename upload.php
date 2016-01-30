@@ -15,7 +15,7 @@
 
 <body>
 
-<form class="" action="/Command.php" method="post" enctype="multipart/form-data">
+<form class="UploadForm" action="/Command.php" method="post" enctype="multipart/form-data">
   文件: <input type="file" name="file" id="file" value=""/>
   <!--
    相册: <input type="text" name="upAlbumName" id="upAlbumName" value=""/><br />
