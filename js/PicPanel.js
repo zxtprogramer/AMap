@@ -160,6 +160,7 @@ function freshPanel(){
     picUserID=picArray[nowIndex]['UserID'];
 
     if(picW>0 && picH>0 && ext=="mp4"){
+	    $("#PicPanelImg").attr("src","");
 	    $("#PicPanelVideo").attr("src",picPath);
 	    $("#PicPanelImg").hide();
 	    $("#PicPanelVideo").show();
@@ -190,6 +191,8 @@ function freshPanel(){
 	    $("#PicPanelImg").css("width",imgW+"px");
 	    $("#PicPanelImg").css("top",topPx+"px");
 	    $("#PicPanelImg").css("left",leftPx+"px");
+
+	    $("#PicPanelVideo").attr("src","");
 	    $("#PicPanelVideo").hide();
 	    $("#PicPanelImg").show();
     }

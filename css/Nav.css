@@ -77,23 +77,27 @@ body{
 
 #UploadPicDiv{
   z-index:2001;
-  width:300px;
-  height:280px;
+  width:100%;
+  height:50px;
   display: inline-block;
-  padding: 5px 10px 6px;
+  //padding: 5px 10px 6px;
+  padding:0px;
   text-decoration: none;
   background:#eee;
-  border-radius: 5px;
-  box-shadow: 2px 5px 5px #aaa;
-  text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
-  border-bottom: 1px solid rgba(0,0,0,0.25);
+  //border-radius: 5px;
+ // box-shadow: 2px 5px 5px #aaa;
+  //border:1px solid #aaa;
+  //text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+  //border-bottom: 1px solid rgba(0,0,0,0.25);
   margin:0px;
   position:absolute;
+  left:0px;
+  bottom:0px;
+  overflow:hidden;
 }
 
 #UploadIframe{
   border:0px;
-  width:100%;
+  width:90%;
   height:100%;
 }
-
